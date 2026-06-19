@@ -1,11 +1,34 @@
 version: "1"
 
 services:
+  prometheus:
+    image: prom/prometheus:v2.47.2
+    container_name: kuritsynam-netology-prometheus
+    command: --web.enable-lifecycle --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+    volumes:
+      - /root/sdvps-homeworks/lecture_demos/6-04/prometheus:/etc/prometheus
+    networks:
+      - kuritsynam-my-netology-hw
 
-volumes:
+  pushgateway:
+    image: prom/pushgateway:v1.6.2
+    container_name: kuritsynam-netology-pushgateway
+    ports:
+      - 9091:9091
+    networks:
+      - kuritsynam-my-netology-hw
+    depends_on:
+      - prometheus
+
+  grafana:
+    image: grafana/grafana
+    container_name: kuritsynam-netology-grafana
+
 
 networks:
-  kuritsyn-am-my-netology-hw:
+  kuritsynam-my-netology-hw:
     driver: bridge
     ipam:
       config:
