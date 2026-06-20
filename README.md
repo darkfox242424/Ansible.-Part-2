@@ -34,18 +34,18 @@ networks:
 
 [docker-compose.yml](docker-compose.yml)
 
-`Скриншот запуска контейнеров в dettached
-!![Скрин](docker-detached-run.png)`
+Скриншот запуска контейнеров в dettached
+![Скрин](docker-detached-run.png)
 
-`Скриншот графика метрики №1
-!![Скрин](metric-graph-1.png)`
+Скриншот графика метрики №1
+![Скрин](metric-graph-1.png)
 
-`Скриншот графика метрики №2
-!![Скрин](metric-graph-2.png)`
+Скриншот графика метрики №2
+![Скрин](metric-graph-2.png)
 
 ---
 
 ### Задание 8
 
-`Скриншот консоли с остановкой и удалением контейнеров
-![Скрин](docker-stop-and-remove.png)`
+Скриншот консоли с остановкой и удалением контейнеров
+![Скрин](docker-stop-and-remove.png)
