@@ -4,6 +4,7 @@ services:
   prometheus:
     image: prom/prometheus:v2.47.2
     container_name: kuritsynam-netology-prometheus
+    restart: unless-stopped
     command: --web.enable-lifecycle --config.file=/etc/prometheus/prometheus.yml
     ports:
       - 9090:9090
@@ -15,6 +16,7 @@ services:
   pushgateway:
     image: prom/pushgateway:v1.6.2
     container_name: kuritsynam-netology-pushgateway
+    restart: unless-stopped
     ports:
       - 9091:9091
     networks:
@@ -25,7 +27,17 @@ services:
   grafana:
     image: grafana/grafana
     container_name: kuritsynam-netology-grafana
-
+    restart: unless-stopped
+    environment:
+      GF_PATHS_CONFIG: /etc/grafana/custom.ini
+    ports:
+      - 80:3000
+    volumes:
+      - /root/sdvps-homeworks/lecture_demos/6-04/grafana:/etc/grafana
+    networks:
+      - kuritsynam-my-netology-hw
+    depends_on:
+      - prometheus
 
 networks:
   kuritsynam-my-netology-hw:
